@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="registration.css">
+    <link rel="stylesheet" href="abc.css">
+    <link rel="stylesheet" href="ch.css">
+    <link rel="stylesheet" href="def.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="pqr.css">
+    <script src="Abc.js"></script>
+    <script src="def.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <Script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    </Script>
+    <script src="Abc.js"></script>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function() {
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+
+            $(".next").click(function() {
+
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 600
+                });
+            });
+
+            $(".previous").click(function() {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 600
+                });
+            });
+
+            $('.radio-group .radio').click(function() {
+                $(this).parent().find('.radio').removeClass('selected');
+                $(this).addClass('selected');
+            });
+
+            $(".submit").click(function() {
+                return false;
+            })
+
+        });
+    </script>
+
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1">
+        <div class="row justify-content-center mt-0">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <h2><strong>Register Yourself</strong></h2>
+                    <p>Fill all form field to go to next step</p>
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <form id="msform">
+                                <!-- progressbar -->
+                                <ul id="progressbar">
+                                    <li class="active" id="account"><strong>Contact</strong></li>
+                                    <li id="personal"><strong>Personal</strong></li>
+                                    <li id="payment"><strong>T&C</strong></li>
+                                    <li id="confirm"><strong>Finish</strong></li>
+                                </ul>
+                                <!-- fieldsets -->
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">player contact</h2>
+
+
+
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5" type="email" name="email" placeholder="Email Id*" />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 " type="Mobile No" name="mno" placeholder="Mobile no*" />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5" type="mobile no" namne="Wano" placeholder="Whatsapp No*" />
+                                        <!-- <input class="form-control py-2 rounded-pill mr-1 pr-5" type="password" name="cpwd" placeholder="Confirm Password*" /> -->
+
+                                    </div>
+
+                                    <input type="button" name="next" class="next action-button rounded-pill " value="Next Step" /></fieldset>
+
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Players Information</h2>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5" type="text" name="fname" placeholder=" Name of player " /> DOB* <input class="form-control py-2 rounded-pill mr-1 pr-5" type="date" name="DOB" placeholder="Birth date"
+                                        />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="text" name="POB" placeholder="Place Of Birth" />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="text" name="Aadhar No" placeholder="Aadhar No" /><br>
+                                        <input class="form-control py- rounded-pill mr-1 pr-5" type="text" name="Address" placeholder="Address" />
+                                        <input class="form-control3 py-2 rounded-pill mr-0 pr-3 " type="text" name="Pincode" placeholder="Pincode" style="font-size: 15px;" />
+
+
+
+
+                                        <input class="form-control4 py-2 rounded-pill mr-0 pr-3" type=" text " name="Occupation " placeholder="Occupation " style="font-size: 15px;" />
+                                        <input class="form-control4 py-2 rounded-pill mr-1 pr-5 " type="text " name="Height " placeholder="Height " style="font-size: 15px;" />
+                                        <input class="form-control4 py-2 rounded-pill mr-1 pr-5 " type="text " name="Weight " placeholder="Weight " style="font-size: 15px;" />
+
+
+
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 " type="text " name="Blood group " placeholder="Blood Group " />
+                                        <div class="skills-border">
+                                            <label for="Skills"><div class="prp">Proficiency/Skill:</div><div class="abcd"><p>NOTE(You have to  select only one from below options)</p></div></label><br>
+                                            <!-- <select  name=" skills"class="form-select rounded-pill  mr-1 pr-5">
+                                    <option disabled selected>Select your skills </option>
+                                    <optgroup label="Batting">
+                                       <option value="RHB">Right Hand</option>
+                                       <option value="LHB">Left Hand</option>
+                                     </optgroup>
+
+                                    <optgroup label="Fast Bowling">
+                                        <option Value="RA">Right Arm</option>
+                                        <option Value="Left Arm">Left Arm</option>
+                                        </option>
+                                    </optgroup>
+                                     <optgroup label=" Spin Bowling">
+                                       <option value="RAOB">Right Arm off Break</option>
+                                       <option value="RALB">Right Arm Leg Break</option>
+                                       <option value="LAO">Left Arm Orthodox</option>
+                                     </optgroup>
+                                     <optgroup Label="Wicket Keeping">
+                                         <option value="Wk">Keeping</option>
+                                     </optgroup>
+
+                                   </select>   -->
+
+                                            Batting:<br>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" >Top order </label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" >Middle Order </label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">Wicket Keeper</label></div>
+                                            <br> Fast Bowling:<br>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" >Right Arm</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">Left Arm</label></div><br> Spin Bowling:<br>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">R/A off Break</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">R/A Leg Break</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">L/A Orthodox</label></div>
+                                            </br>
+                                        </div>
+                                        <div class="skills-border1">
+                                            <label for="city"><div class="city">Select your Team :</div><div class="abcd"><p>NOTE(Select your nearest place for selection)</p></div></label>
+                                            <Br>
+                                            <div class="radio "><label> <input type="radio" name="city" value="Kolhapur Legends">Kolhapur Legends</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Pune City">Pune City</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Thane Stars">Thane Stars</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Ahmednagar Lions">Ahmednagar Lions</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Pune Local">Pune Local</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Raigad Breakers">Raigad Breakers</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Beed Supernovas">Beed Supernovas</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Sangli Eagles">Sangali Eagles</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="PCMC Challengers">PCMC Challengers</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Latur Elites">Latur Elites</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Parbhani Kings">Parbhani Kings</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Baramati Warriors">Baramati Warriors</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Amravati Falcons">Amravati Falcons</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Nashik Strikers">Nashik Strikers</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Solapur Fighters">Solapur Fighters</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Mumbai Xi">Mumbai Xi</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Aurabgabad Titans">Aurangabad Titans</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Stara Boys">Satara Boys</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Nagpur Blasters">Nagpur Blasters</label></div><br>
+                                            <div class="radio "><label> <input type="radio" name="city"value="Nanded Galaxy">Nanded Galaxy</label></div><br>
+
+
+
+                                        </div>
+
+
+
+
+                                        <!-- <select  name="city"  class="form-select rounded-pill  mr-1 pr-5">
+                                    <option disabled selected text-align="center"> your nearest Team</option>
+                                    <optgroup label="City">
+                                     
+                                      <option value="c1">Latur Elites</option>
+                                       <option value="c2">Pune Locals</option>
+                                       <option value="c3">Sangli Eagles</option>
+                                       <option value="c4">Beed SuperNovas</option>
+                                       <option value="c5">Baramati Warriers</option>
+                                       <option value="c6">Raigad Breakers</option>
+                                       <option value="c7">PCMC Challengers</option>
+                                       <option value="c8">Amravati falcons</option>
+                                       <option value="c9">Nanded Galexy</option>
+                                       <option value="c10">Aurangabad Titans</option>
+                                       <option value="c11">Solapur Fighters</option>
+                                       <option value="c12">Kolhapur Legends</option>
+                                       <option value="c13">Ahamednagar Lions</option>
+                                       <option value="c14">Nashik Strikers</option>
+                                       <option value="c15">Nagpur Blasters</option> 
+                                       <option value="c16">Satara Boys</option>
+                                       <option value="c17">Thane Stars</option>
+                                       <option value="c18">Mumbai XI</option>
+                                       <option value="c19">parbhani kings</option>
+                                       <option value="c20">pune City</option>
+                                       </optgroup>
+                                     
+
+                                   </select> -->
+
+
+                                    </div>
+                                    <input type="button " name="previous " class="previous action-button-previous rounded-pill text-center" value="Previous " />
+                                    <input type="button " name="next " class="next action-button rounded-pill text-center" value="Next Step " />
+                                </fieldset>
+
+
+
+                                <fieldset>
+                                    <div class="form-card ">
+                                        <h2 class="fs-title">Terms &conditions</h2>
+                                        Indemnity and release. In consideration of being allowed to participate in Maharashtra Cricket League, training, including travel and associated events (“Activities”) organised and/or supervised by The cricsports Association Inc. I acknowledge, agree
+                                        and confirm the following:
+                                        <br> a) That there are inherent risks associated with the Activities which may result in personal injury in a serious manner. I fully accept and agree to bear those risks.
+                                        <br> b) To the full extent permitted by law, I absolve, indemnify, release and discharge the Maharashtra cricket league, it Representatives and sportsman (”Indemnities”) from any and all liability for any injury,
+                                        loss, cost, charge, expense or damage suffered by doing such activities, arising from or incurred directly or indirectly as a result of my participation in the Activities, including without limitation as a result
+                                        of any act, default, omission or negligence of the Indemnities.
+                                        <br> Acknowledgement / Consent 1. I have read, understood, acknowledge and agree to all the matters referred to in the statement, including the warning, release and indemnity.
+                                        <br> 2. I have read and understood the above PRIVACY LEGISLATION CLAUSE and give Cricsports authorisation to record and use the information supplied, for the purposes detailed.
+                                        <br> 3. I hereby give consent for any photographs/electronic media (eg video) of myself to be published by The cricsports Association Inc, Maharashtra cricket league and/or other purpose of marketing, newsletters,
+                                        publications or other cricket-related business.
+                                        <br> 4. I hereby give permission for my contact and emergency contact details being provided to the Coach and Manager.
+                                        <br>
+                                        <!-- <input type="checkbox " name="T&C ">
+                                        <U>I Agree to the  terms of service</U> -->
+                                        <input type="checkbox" name="T&C" style="size: 5px;">
+                                        <U style="font-size: 20px;">I Agree to the  terms of service</U><br>
+
+                                        <input type="button " name="previous " class="previous action-button-previous rounded-pill text-center" value="Previous " />
+                                        <input type="button " name="next " class="next action-button rounded-pill text-center" value="Next Step " />
+
+
+
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card ">
+                                        <h2 class="fs-title text-center ">Success!</h2> <br><br>
+                                        <div class="row justify-content-center ">
+                                            <div class="col-3 sm-6 "> <img src="upload/sucess.png" class=" img-responsive " margin-left="0px" Height="90px" width="90px"> </div>
+                                        </div> <br><br>
+                                        <div class="row justify-content-center ">
+                                            <div class="col-7 text-center ">
+                                                <h5>You Have Successfully Registered now!</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            if ($(window).width() <= 500) {
+                // $("#grad1").css("background-color", "white")
+                $("#grad1").css("background-image", "linear-gradient(120deg, #FF4081, white,white)")
+            }
+        </script>
+</body>
+
+</html>
