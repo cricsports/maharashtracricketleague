@@ -41,7 +41,7 @@
                 current_fs = $(this).parent();
                 next_fs = $(this).parent().next();
                 
-                 $(".mandatory").each(function (index) {
+                 $(current_fs).find('.mandatory').each(function (index) {
         // element == this
         if (
             $(this).val() === "" ||
