@@ -439,8 +439,12 @@
             //   }
         }
     });
+                                                                 $("#save").attr("disabled",false)
+
 if(flag!=1)
 {
+                                                                                            $("#save").attr("disabled",true)
+
  $.ajax({
      type: "POST",
      url: "https://omnisoftwares1.pythonanywhere.com/mcl/save_contact",
