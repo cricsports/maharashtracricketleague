@@ -296,14 +296,14 @@
                 $("#grad1").css("background-image", "linear-gradient(120deg, #FF4081, white,white)")
             }
             $("#check").change(function()
-                              {alert()
+                              {
               if($("#check").is(":checked")===true)
               {
-              $("#save").attr("disabled",false)
+              $("#save").prop("disabled",false)
               }
                 else
                 {
-                  $("#save").attr("disabled",true)
+                  $("#save").prop("disabled",true)
            
                 }
             })
