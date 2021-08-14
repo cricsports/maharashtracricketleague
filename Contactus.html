@@ -19,6 +19,7 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png" />
+  
     <link rel="apple-touch-icon" sizes="72x72" href="images/xapple-touch-icon-72x72.png.pagespeed.ic.lf5d8kCpOf.png" />
     <link rel="apple-touch-icon" sizes="76x76" href="images/xapple-touch-icon-76x76.png.pagespeed.ic.ATZZpSeito.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="images/xapple-touch-icon-114x114.png.pagespeed.ic.Fi5O5s2tzL.png" />
@@ -39,6 +40,8 @@
     <![endif]-->
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
 </head>
 
 <body>
@@ -119,29 +122,27 @@
                 <div class="container">
                     <h1 class="text-white text-center text-light">ContactUs</h1>
                     <div class="modal-body">
-                        <form action="https://incredibletechnology.in/web/enquiry" enctype="multipart/form-data" method="POST" autocomplete="off">
                             <div class="form-group">
                                 <label class="text-white">Name</label>
-                                <input type="text" name="name" class="form-control br-0" required>
+                                <input type="text" name="name" class="form-control br-0 mandatory" required  id='name'>
                             </div>
                             <div class="form-group">
                                 <label class="text-white">Email</label>
-                                <input type="email" name="email" class="form-control br-0" required>
+                                <input type="email" name="email" class="form-control br-0 " required id='email'>
                             </div>
                             <div class="form-group">
                                 <label class="text-white">Phone No.</label>
-                                <input type="text" name="phone" class="form-control br-0" required>
+                                <input type="text" name="phone" class="form-control br-0 mandatory" required id='contact'>
                             </div>
                             <div class="form-group">
                                 <label class="text-white">Feedback</label>
-                                <textarea class="form-control br-0" name="message" rows="5" required placeholder="Write your Feedback here"></textarea>
+                                <textarea class="form-control br-0 mandatory" name="message" rows="5" required placeholder="Write your Feedback here" id='feedback'></textarea>
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" name="submit" class="btn btn-info br-0">Submit</button>
+                        <button type="button" name="submit" class="btn btn-info br-0">Submit</button>
                     </div>
-                    </form>
-
+             
 
 
 
@@ -400,9 +401,62 @@
                     auto: true
                 });
             })(jQuery);
+
+
+
+            
+ $("#save").click(function (e) { 
+ 
+ $("#save").attr("disabled",true)
+            
+
+ var data=
+ {
+  name:$("#name").val(),
+  contact:$("#contact").val(),
+  email:$("#email").val(),
+  feedback:$("#feedback").val(),
+
+
+ }
+ var flag=0;
+ $('.mandatory').each(function (index) {
+        // element == this
+        if (
+            $(this).val() === "" ||
+            $(this).val() === undefined ||
+            $(this).val() === null
+        ) {
+            //   if ($(this).attr("id") === "member_image") {
+            //     $("#preview").css("border", "2px solid red");
+            //   }
+            $(this).css("border-bottom", "2px solid red");
+            flag = 1;
+        } else {
+            $(this).css("border-bottom", "");
+            //   if ($(this).attr("id") === "member_image") {
+            //     $("#preview").css("border", "2px solid black");
+            //   }
+        }
+    });
+if(flag!=1)
+{
+ $.ajax({
+     type: "POST",
+     url: "https://omnisoftwares1.pythonanywhere.com/mcl/save_contact",
+     contentType: "application/json; charset=utf-8",
+   
+     data:JSON.stringify(data),
+     success: function (response) {
+         swal("","Saved Successfully","success")
+         setTimeout(function(){location.reload(),3000})
+     }
+ }); 
+}
+});
+
         </script>
 </body>
 
 <!--  38:47  -->
-
 </html>
