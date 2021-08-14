@@ -297,7 +297,7 @@
             }
             $("#check").change(function()
                               {alert()
-              if($(this).attr("checked")===true)
+              if($("#check").is(":checked")===true)
               {
               $("#save").attr("disabled",false)
               }
