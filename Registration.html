@@ -206,15 +206,15 @@
                                    </select>   -->
 
                                             Batting:<br>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" >Top order </label></div>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" >Middle Order </label></div>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">Wicket Keeper</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="Top_order">Top order </label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="Middle_Order">Middle Order </label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="Wicket_Keeper">Wicket Keeper</label></div>
                                             <br> Fast Bowling:<br>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" >Right Arm</label></div>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">Left Arm</label></div><br> Spin Bowling:<br>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">R/A off Break</label></div>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">R/A Leg Break</label></div>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills">L/A Orthodox</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="Right_Arm">Right Arm</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="Left_Arm">/label></div><br> Spin Bowling:<br>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="R/A_off_Break">R/A off Break</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="R/A_Leg_Break">R/A Leg Break</label></div>
+                                            <div class="radio rounded-pill"><label> <input type="radio" name="skills" value="L/A_Orthodox">L/A Orthodox</label></div>
                                             </br>
                                         </div>
                                         <div class="skills-border1">
@@ -353,7 +353,6 @@ const rbs_ = document.querySelectorAll('input[name="skills"]');
   contact_no2:$("#contact_no2").val(),
   date_of_birth:$("#birth_date").val(),
   place_of_birth:$("#place_of_birth").val(),
-  prefer_team:selectedText,
   address:$("#address").val(),
   pincode:$("#pincode").val(),
   occupation:$("#occupation").val(),
