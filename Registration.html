@@ -25,7 +25,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
-    <Script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </Script>
     <script src="Abc.js"></script>
@@ -158,9 +158,9 @@
 
 
 
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 " type="email" name="email" placeholder="Email Id*" />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory " type="number" name="mno" placeholder="Mobile no*" />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory" type="number" name="Wano" placeholder="Whatsapp No*" />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 " type="email" name="email" placeholder="Email Id*" id='email_id'/>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory " type="number" name="mno" placeholder="Mobile no*" id='contact_no2'/>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory" type="number" name="Wano" placeholder="Whatsapp No*" id='contact_no'/>
                                         <!-- <input class="form-control py-2 rounded-pill mr-1 pr-5" type="password" name="cpwd" placeholder="Confirm Password*" /> -->
 
                                     </div>
@@ -170,16 +170,16 @@
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="fs-title">Players Information</h2>
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory" type="text " name="fname" placeholder=" Name of player " /> DOB* <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory" type="date" name="DOB" placeholder="Birth date"
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory" type="text " name="fname" placeholder=" Name of player " id='full_name' /> DOB* <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory" type="date" name="DOB" id='birth_date' placeholder="Birth date"
                                         />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="text" name="POB" placeholder="Place Of Birth" />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="number" name="Aadhar No" placeholder="Aadhar No" />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="text" name="Address" placeholder="Address" />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="number" name="Pincode" placeholder="Pincode"/>
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type=" text " name="Occupation " placeholder="Occupation "  />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="number " name="number " placeholder="Height "  />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="number " name="number" placeholder="Weight "  />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="text " name="Blood group " placeholder="Blood Group " />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="text" name="POB" placeholder="Place Of Birth" id='place_of_birth'/>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="number" name="Aadhar No" placeholder="Aadhar No" id='aadhar'/>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="text" name="Address" placeholder="Address" id='address'/>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center mandatory" type="number" name="Pincode" placeholder="Pincode" id='pincode'/>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type=" text " name="Occupation " placeholder="Occupation "  id='occupation'/>
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="number " name="number " placeholder="Height " id='height' />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="number " name="number" placeholder="Weight "  id='weight' />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 text-center" type="text " name="Blood group " placeholder="Blood Group " id='blood_group'/>
                                         <div class="skills-border">
                                             <label for="Skills"><div class="prp">Proficiency/Skill:</div><div class="abcd"><p>NOTE(You have to  select only one from below options)</p></div></label><br>
                                             <!-- <select  name=" skills"class="form-select rounded-pill  mr-1 pr-5">
@@ -313,6 +313,72 @@ You have to pay this amount once for the tournament, non of the amount will be r
            
                 }
             })
+
+
+            /**
+ * 
+ */
+
+ //add player in database
+
+ $("#save").click(function (e) { 
+ 
+ $("#save").attr("disabled",true)
+            
+
+const rbs = document.querySelectorAll('input[name="city"]');
+         let selectedValue,selectedText;
+         for (const rb of rbs) {
+             if (rb.checked) {
+                 selectedValue = rb.value;
+                 selectedText=rb.innerText
+                 break;
+             }
+         }
+
+const rbs_ = document.querySelectorAll('input[name="skills"]');
+         let selectedValue_;
+         for (const rb of rbs_) {
+             if (rb.checked) {
+                 selectedValue_ = rb.value;
+                 break;
+             }
+         }
+          
+ var data=
+ {
+  full_name:$("#full_name").val(),
+  email_id:$("#email_id").val(),
+  contact_no:$("#contact_no").val(),
+  contact_no2:$("#contact_no2").val(),
+  date_of_birth:$("#birth_date").val(),
+  place_of_birth:$("#place_of_birth").val(),
+  prefer_team:selectedText,
+  address:$("#address").val(),
+  pincode:$("#pincode").val(),
+  occupation:$("#occupation").val(),
+  height:$("#height").val(),
+  weight:$("#weight").val(),
+  blood_group:$("#blood_group").val(),
+  skill:selectedValue_,
+  aadhar:$("#aadhar").val(),
+  registration_date:new Date(),
+  team:parseInt(selectedValue)
+
+
+ }
+ $.ajax({
+     type: "POST",
+     url: "https://omnisoftwares1.pythonanywhere.com/mcl/save_player",
+     contentType: "application/json; charset=utf-8",
+   
+     data:JSON.stringify(data),
+     success: function (response) {
+         swal("","Saved Successfully","success")
+         setTimeout(function(){location.reload(),3000})
+     }
+ }); 
+});
         </script>
 </body>
 
