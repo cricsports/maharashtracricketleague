@@ -40,7 +40,29 @@
 
                 current_fs = $(this).parent();
                 next_fs = $(this).parent().next();
+                
+                 $(".mandatory").each(function (index) {
+        // element == this
+        if (
+            $(this).val() === "" ||
+            $(this).val() === undefined ||
+            $(this).val() === null
+        ) {
+            //   if ($(this).attr("id") === "member_image") {
+            //     $("#preview").css("border", "2px solid red");
+            //   }
+            $(this).css("border-bottom", "2px solid red");
+            flag = 1;
+        } else {
+            $(this).css("border-bottom", "");
+            //   if ($(this).attr("id") === "member_image") {
+            //     $("#preview").css("border", "2px solid black");
+            //   }
+        }
+    });
 
+               if(flag!=1)
+               {
                 //Add Class Active
                 $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
@@ -64,13 +86,14 @@
                     },
                     duration: 600
                 });
-            });
+               }
+               });
 
             $(".previous").click(function() {
 
                 current_fs = $(this).parent();
                 previous_fs = $(this).parent().prev();
-
+                 
                 //Remove class active
                 $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
@@ -133,9 +156,9 @@
 
 
 
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5" type="email" name="email" placeholder="Email Id*" />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 " type="Mobile No" name="mno" placeholder="Mobile no*" />
-                                        <input class="form-control py-2 rounded-pill mr-1 pr-5" type="mobile no" namne="Wano" placeholder="Whatsapp No*" />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 " type="email" name="email" placeholder="Email Id*" />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory " type="Mobile No" name="mno" placeholder="Mobile no*" />
+                                        <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory" type="mobile no" namne="Wano" placeholder="Whatsapp No*" />
                                         <!-- <input class="form-control py-2 rounded-pill mr-1 pr-5" type="password" name="cpwd" placeholder="Confirm Password*" /> -->
 
                                     </div>
