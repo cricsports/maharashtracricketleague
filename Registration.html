@@ -264,11 +264,11 @@
                                         <br>
                                         <!-- <input type="checkbox " name="T&C ">
                                         <U>I Agree to the  terms of service</U> -->
-                                        <input type="checkbox" name="T&C" style="size: 5px;">
+                                        <input type="checkbox" name="T&C" style="size: 5px;" id='check'>
                                         <U style="font-size: 20px;">I Agree to the  terms of service</U><br>
 
                                         <input type="button " name="previous " class="previous action-button-previous rounded-pill text-center" value="Previous " />
-                                        <input type="button " name="next " class="next action-button rounded-pill text-center" value="Next Step " />
+                                        <input type="button " name="next " class="next action-button rounded-pill text-center" value="Submit" id='save' disabled/>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card ">
@@ -295,6 +295,18 @@
                 // $("#grad1").css("background-color", "white")
                 $("#grad1").css("background-image", "linear-gradient(120deg, #FF4081, white,white)")
             }
+            $("#check").click(function()
+                              {
+              if($(this).attr("checked")===true)
+              {
+              $("#save").attr("disabled",false)
+              }
+                else
+                {
+                  $("#save").attr("disabled",true)
+           
+                }
+            })
         </script>
 </body>
 
