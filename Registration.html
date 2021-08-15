@@ -43,7 +43,7 @@
                 current_fs = $(this).parent();
                 next_fs = $(this).parent().next();
                 
-                 $(current_fs).find('.mandatory').each(function (index) {
+                 $(current_fs).find('.mandatory_').each(function (index) {
         // element == this
         if (
             $(this).val() === "" ||
@@ -368,7 +368,7 @@ const rbs_ = document.querySelectorAll('input[name="skills"]');
      data:JSON.stringify(data),
      success: function (response) {
          swal("","Saved Successfully","success")
-         setTimeout(function(){location.reload(),500000})
+         //setTimeout(function(){location.reload(),10000})
      }
  }); 
 });
