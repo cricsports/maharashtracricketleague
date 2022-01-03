@@ -165,14 +165,12 @@
                                         <input class="form-control py-2 rounded-pill mr-1 pr-5 mandatory_" type="number" name="Wano" placeholder="Whatsapp No*" id='contact_no'/>
                                         <!-- <input class="form-control py-2 rounded-pill mr-1 pr-5" type="password" name="cpwd" placeholder="Confirm Password*" /> -->
                                         Gender:<br>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="Gender" value="Female">Female</label></div>
-                                            <div class="radio rounded-pill"><label> <input type="radio" name="Gender" value="Male">Male </label></div>
-                                           
+                                        <select id=gender><option value='Male'>Male</option><option value='Female'>Female</option></select>
                                         
                                     </div>
 
-                                    <input type="button" name="next" class="next action-button rounded-pill " value="Next Step" /></fieldset>
-
+                                    <input type="button" name="next" class="next action-button rounded-pill " value="Next Stp" /></fieldset>
+m
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="fs-title">Players Information</h2>
@@ -482,13 +480,14 @@ const rbs_ = document.querySelectorAll('input[name="skills"]');
   address:$("#address").val(),
   pincode:$("#pincode").val(),
   occupation:$("#occupation").val(),
-  height:$("#height").val(),
-  weight:$("#weight").val(),
+  height:$("#height option:selected").text(),
+  weight:$("#weight option:selected").text(),
   blood_group:$("#blood_group").val(),
   skill:selectedValue_,
   aadhar:$("#aadhar").val(),
   registration_date:new Date(),
-  team:parseInt(selectedValue)
+  team:parseInt(selectedValue),
+  gender:$("#gender").val()
 
 
  }
